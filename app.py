@@ -6,7 +6,7 @@ app=Flask(__name__)
 @app.route('/',methods=['POST','GET'])
 @cross_origin()
 def test():
-    return "This is my first sample ML project"
+    return " CI/CD and CT"
 
 if __name__=='__main__':
     app.run(debug=True)  
