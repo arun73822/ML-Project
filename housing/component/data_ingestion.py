@@ -22,7 +22,7 @@ class Data_Ingestion:
         except Exception as e:
             raise Housing_Exception(e,sys)
     
-    def download_housing_data(self)-> str:
+    def download_housing_data(self)->str:
         try:
             download_ulr=self.data_ingestion_config.dataset_download_url
 
@@ -98,7 +98,7 @@ class Data_Ingestion:
                 strat_train_set.to_csv(train_file_path,index=False)
 
             if strat_test_set is not None:
-                os.makedirs(self.data_ingestion_config.ingested_test_dir, exist_ok= True)
+                os.makedirs(self.data_ingestion_config.ingested_test_dir,exist_ok=True)
                 logging.info(f"Exporting test dataset to file: [{test_file_path}]")
                 strat_test_set.to_csv(test_file_path,index=False)
             

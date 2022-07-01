@@ -8,5 +8,5 @@ def main():
         logging.error(f"{e}")
         print(e)
 
-if __name__=='__main__':
+if __name__=="__main__":
     main()

@@ -15,7 +15,7 @@ class Housing_Exception(Exception):
         try_block_no=exec_tb.tb_lineno
 
         error_message = f"""Error occured in script:
-                        [{file_name}] at
+                        [ {file_name} ] at
                         try block number is {[try_block_no]} and
                         exception block number is {[exception_block_line_no]} and 
                         error message is {[error_message]}"""
