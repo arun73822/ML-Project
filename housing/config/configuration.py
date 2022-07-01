@@ -10,14 +10,14 @@ class Configuration:
     def __init__(self,filepath:str=CONFIG_FILE_PATH,current_timestamp=CURRENT_TIME_STAMP)->None:
         try:
             self.config_info=read_yaml_file(file_path=filepath)
-            self.get_trining_pipeline_config=self.get_trining_pipeline_config()
+            self.training_pipeline_config=self.get_training_pipeline_config()
             self.current_timestamp=current_timestamp
         except Exception as e:
             raise Housing_Exception(e,sys) from e
 
     def get_data_ingestion_config(self)-> Data_Ingestion_Config:
         try:
-            artifact_dir=self.get_trining_pipeline_config.artifact_dir
+            artifact_dir=self.training_pipeline_config.artifact_dir
             data_ingestion_artifact_dir= os.path.join(artifact_dir,
                                                       DATA_INGESTION_ARTIFACT_DIR,
                                                       self.current_timestamp)
@@ -84,11 +84,11 @@ class Configuration:
         except Exception as e:
             raise Housing_Exception(e,sys) from e
 
-    def get_trining_pipeline_config(self)->Training_Pipeline_Config:
+    def get_training_pipeline_config(self)->Training_Pipeline_Config:
         try:
-            training_pipeline_config=self.config_info(TRAINING_PIPELINE_CONFIG_KEY)
+            training_pipeline_config=self.config_info[TRAINING_PIPELINE_CONFIG_KEY]
             artifact_dir= os.path.join(ROOT_DIR,
-                                       training_pipeline_config[TRAINING_PIPELINE_CONFIG_KEY],
+                                       training_pipeline_config[TRAINING_PIPELINE_NAME_KEY],
                                        training_pipeline_config[TRAINING_PIPELINE_ARTIFACT_DIR])
             
             training_pipeline_config=Training_Pipeline_Config(artifact_dir=artifact_dir)
