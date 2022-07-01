@@ -1,4 +1,3 @@
-from housing.constants import ROOT_DIR
 from housing.logger import logging
 from housing.exception import Housing_Exception
 from housing.entity.config_entity import (Data_Ingestion_Config,Data_Transformation_Config,
@@ -45,7 +44,7 @@ class Data_Ingestion:
         except Exception as e:
             raise Housing_Exception(e,sys) from e
 
-    def extract_housing_data(self,tgz_file_path:str)-> str:
+    def extract_housing_data(self,tgz_file_path:str):
         try:
             raw_data_dir=self.data_ingestion_config.raw_data_dir
 
