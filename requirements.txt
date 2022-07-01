@@ -2,3 +2,8 @@ Flask
 gunicorn
 Flask-Cors
 PyYAML
+pandas
+numpy
+six
+sklearn
+-e .
