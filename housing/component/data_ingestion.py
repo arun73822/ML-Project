@@ -49,15 +49,16 @@ class Data_Ingestion:
             raw_data_dir=self.data_ingestion_config.raw_data_dir
 
             if os.path.exists(raw_data_dir):
-                os.remove(raw_data_dir)
+               os.remove(raw_data_dir)
 
             os.makedirs(raw_data_dir,exist_ok=True)
 
             logging.info(f"Extracting tgz file: [{tgz_file_path}] into dir: [{raw_data_dir}]")
 
-            with tarfile.open(raw_data_dir) as housing_file_obj:
+            with tarfile.open(tgz_file_path) as housing_file_obj:
                 housing_file_obj.extractall(path=raw_data_dir)
                 logging.info(f"Extraction completed")
+
         except Exception as e:
             raise Housing_Exception(e,sys) from e
 
@@ -65,8 +66,8 @@ class Data_Ingestion:
         try:
             raw_data_dir=self.data_ingestion_config.raw_data_dir
 
-            housing_file_name=os.listdir(raw_data_dir)[0]
-            housing_file_path= os.path.join(raw_data_dir,housing_file_name)
+            file_name=os.listdir(raw_data_dir)[0]
+            housing_file_path= os.path.join(raw_data_dir,file_name)
             logging.info(f"Reading csv file: [{housing_file_path}]")
 
             housing_data_frame=pd.read_csv(housing_file_path)
@@ -87,10 +88,10 @@ class Data_Ingestion:
                 strat_test_set = housing_data_frame.loc[test_index].drop(["income_cat"],axis=1)
 
             train_file_path = os.path.join(self.data_ingestion_config.ingested_train_dir,
-                                            housing_file_name)
+                                           file_name)
 
             test_file_path = os.path.join(self.data_ingestion_config.ingested_test_dir,
-                                        housing_file_name)
+                                          file_name)
             
             if strat_train_set is not None:
                 os.makedirs(self.data_ingestion_config.ingested_train_dir,exist_ok=True)

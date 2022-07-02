@@ -28,7 +28,7 @@ class Configuration:
             data_set_download_url=data_ingestion_info[DATA_INGESTION_DATASET_URL_KEY]
 
             raw_data_dir=os.path.join(data_ingestion_artifact_dir,
-                                      data_ingestion_info[DATA_INGESTION_INGESTED_DIR])
+                                      data_ingestion_info[DATA_INGESTION_RAW_DATA_DIR])
             
             tgz_data_dir=os.path.join(data_ingestion_artifact_dir,
                                       data_ingestion_info[DATA_INGESTION_TGZ_DATA_DIR])
