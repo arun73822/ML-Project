@@ -6,7 +6,7 @@ CONFIG_DIR= "config"
 CONFIG_FILE_NAME= "config.yaml"
 CONFIG_FILE_PATH= os.path.join(ROOT_DIR,CONFIG_DIR,CONFIG_FILE_NAME)
 
-CURRENT_TIME_STAMP = f"{datetime.now().strftime('%Y-%m-%d-%I-%M-%S_%p')}"
+CURRENT_TIME_STAMP = f"{datetime.now().strftime('%Y-%m-%d_%I-%M-%S_%p')}"
 
 # Training_Pipeline_related_variables
 TRAINING_PIPELINE_CONFIG_KEY= "training_pipeline_config"
@@ -25,7 +25,11 @@ DATA_INGESTION_ARTIFACT_DIR= "data_ingestion"
 
 # Data_Validation_related_variables
 DATA_VALIDATION_CONFIG_KEY= "data_validation_config"
-DATA_VALIDATION_SCHEMA_FILE_NAME_KEY= "schema_file_name_path"
+DATA_VALIDATION_SCHEMA_FILE_DIR= "schema_dir"
+DATA_VALIDATION_SCHEMA_FILE_NAME_KEY= "schema_file_name"
+DATA_VALIDATION_ARTIFACT_DIR= "data_validation"
+DATA_VALIDATION_REPORT_FILE_NAME_KEY= "report_file_name"
+DATA_VALIDATION_REPORT_PAGE_FILE_NAME_KEY= "report_page_file_name"
 
 # Data Transformation related variables
 DATA_TRANSFORMATION_CONFIG_KEY= "data_transformation_config"

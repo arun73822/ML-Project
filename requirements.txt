@@ -6,4 +6,5 @@ pandas
 numpy
 six
 sklearn
+evidently
 -e .

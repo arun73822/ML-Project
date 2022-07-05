@@ -1,8 +1,6 @@
 from housing.logger import logging
 from housing.exception import Housing_Exception
-from housing.entity.config_entity import (Data_Ingestion_Config,Data_Transformation_Config,
-                                          Data_Validation_Config,Model_Evaluation_Config,Model_Pusher_Config,
-                                          Model_Trainer_Config,Training_Pipeline_Config)
+from housing.entity.config_entity import Data_Ingestion_Config
 from housing.entity.artifact_entity import Data_Ingestion_Artifact
 from housing.config.configuration import Configuration
 from housing.constants import *

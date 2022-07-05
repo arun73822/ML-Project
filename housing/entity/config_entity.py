@@ -4,7 +4,8 @@ Data_Ingestion_Config= namedtuple("Data_Ingestion_Config",['dataset_download_url
                                                            'tgz_data_dir','ingested_train_dir',
                                                            'ingested_test_dir'])
 
-Data_Validation_Config= namedtuple("Data_Validation_Config",['schema_file_path'])
+Data_Validation_Config= namedtuple("Data_Validation_Config",['schema_file_path','report_file_path',
+                                                             'report_page_file_path'])
 
 Data_Transformation_Config= namedtuple("Data_Transformation_Config",['add_bedroom_per_room',
                                                                      'transformed_train_dir',
