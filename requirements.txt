@@ -7,4 +7,5 @@ numpy
 six
 sklearn
 evidently
+dill
 -e .

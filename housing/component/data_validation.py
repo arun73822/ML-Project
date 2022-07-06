@@ -18,6 +18,7 @@ class Data_Validation:
     def __init__(self,data_validation_config : Data_Validation_Config,
                  data_ingestion_artifact : Data_Ingestion_Artifact):
         try:
+            logging.info(f"{'=' * 20}Data Validation log started.{'=' * 20} ")
             self.data_validation_config=data_validation_config
             self.data_ingestion_artifact=data_ingestion_artifact
         except Exception as e:

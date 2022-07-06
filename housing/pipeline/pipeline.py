@@ -1,6 +1,7 @@
+from housing.component.data_transformation import Data_Transformation
 from housing.exception import Housing_Exception
 from housing.entity.config_entity import Data_Ingestion_Config,Data_Validation_Config
-from housing.entity.artifact_entity import Data_Ingestion_Artifact,Data_Validation_Artifact
+from housing.entity.artifact_entity import Data_Ingestion_Artifact, Data_Transformation_Artifact,Data_Validation_Artifact
 from housing.config.configuration import Configuration
 from housing.component.data_ingestion import Data_Ingestion
 from housing.component.data_validation import Data_Validation
@@ -30,9 +31,15 @@ class Pipeline:
         except Exception as e:
             raise Housing_Exception(e,sys) from e
 
-    def start_data_transformation(self):
+    def start_data_transformation(self,data_ingestion_artifact:Data_Ingestion_Artifact,
+                        data_validation_artifact:Data_Validation_Artifact)->Data_Transformation_Artifact:
         try:
-            pass
+            data_transformation = Data_Transformation(
+                data_transformation_config=self.config.get_data_transformation_config(),
+                data_ingestion_artifact=data_ingestion_artifact,
+                data_validaton_artifact=data_validation_artifact)
+                
+            return data_transformation.initiate_data_transformation()
         except Exception as e:
             raise Housing_Exception(e,sys) from e
 
@@ -58,7 +65,16 @@ class Pipeline:
         try:
             # data_ingestion
             data_ingestion_artifact= self.start_data_ingestion()
-            data_validation_artifact= self.start_data_validation(data_ingestion_artifact=data_ingestion_artifact)
+
+            # data_validation
+            data_validation_artifact= self.start_data_validation(
+                data_ingestion_artifact=data_ingestion_artifact)
+            
+            # data_transformation
+            data_tranformation_artifact=self.start_data_transformation(
+                          data_ingestion_artifact=data_ingestion_artifact,
+                          data_validation_artifact=data_validation_artifact)
+
         except Exception as e:
             raise Housing_Exception(e,sys) from e
             

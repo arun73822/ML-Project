@@ -18,8 +18,10 @@ data_validation_config:
 
 data_transformation_config:
   add_bedroom_per_room: True
-  transformed_tarin_dir: transformed_train
-  transformed_test_dir: transformed_test
+  transformed_dir: transformed_data
+  transformed_train_dir: train
+  transformed_test_dir: test
+  preprocessed_dir: preprocessed
   preprocessed_object_file_name: preprocessed.pkl
 
 model_trainer_config:
